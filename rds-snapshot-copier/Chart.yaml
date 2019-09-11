@@ -1,0 +1,13 @@
+apiVersion: v1
+name: rds-snapshot-copier
+version: 0.1.0
+description: Utility to copy AWS RDS snapshots, supports regions and KMS.
+keywords:
+  - rds
+  - snapshot
+  - copy
+maintainers:
+  - name: Ben Tucker
+    email: ben_tucker@hotmail.com
+home: https://github.com/bluebenno/rds-snapshot-copier
+appVersion: 0.1.1

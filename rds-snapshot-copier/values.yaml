@@ -1,0 +1,60 @@
+# Default values for rds-snapshot-copier.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+## Codebase is designed to only run singluarly
+replicaCount: 1
+
+image:
+  repository: bluebenno/rds-snapshot-copier
+  tag: 0.1.0
+  pullPolicy: IfNotPresent
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+## How much grace is given before a shutdown, given a copy could be in progress.
+terminationGracePeriodSeconds: 1800
+
+## TODO
+## livenessProbe: {}
+## readinessProbe: {}
+
+env:
+  ## The app runs in an infinite loop, with this much sleep at the end of every loop
+  RUN_EVERY_MINS: 60
+
+  ## SOURCE_REGION to copy fromm
+  SOURCE_REGION: ap-southeast-2
+
+  ## TARGET_REGION to copy into
+  TARGET_REGION: ap-southeast-1
+
+  ## Optional. If supplied *all* copied snapshots will be encrypted with this KMS key
+  ## TARGET_KMS:
+
+  ## Optional. If supplied, per rds snapshots will be housekept in the target region.
+  ##           Warning will cull/delete oldest snapshots.
+  ## MAX_SNAPSHOT_TGT
+
+  ## Optional. Log Level.
+  ## "debug", "info", "warn", "error", "dpanic", "panic", and "fatal" are valid
+  LOG_LEVEL: info
+
+  ## Optional. Number of snapshot copies in flight. Bearing in mind AWS Maxium is six between regions
+  MAX_SNAPSHOT_FLIGHT: 2

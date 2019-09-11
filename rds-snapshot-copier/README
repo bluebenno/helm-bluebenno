@@ -1,0 +1,22 @@
+
+# Introduction
+This helm chart is to launch [rds-snapshot-copier](https://github.com/bluebenno/rds-snapshot-copier) into a Kubernetes cluster.
+
+
+## Prerequisites
+* Kubernetes <1.TBD>
+
+## Installing the Chart
+You can install the chart with the release name as below.
+
+```console
+$ helm install --name [name] .
+```
+
+If you do not specify a name, helm will select a name for you.
+
+
+```console{%raw}
+$ kubectl get all -l app=rds-snapshot-copier
+
+```

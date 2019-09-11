@@ -1,0 +1,5 @@
+
+rds-snapshot-copier should now be running in an infinite loop.
+
+You can check logs by:
+kubectl --namespace {{ .Release.Namespace }} logs -l app=rds-snapshot-copier
